@@ -1,0 +1,102 @@
+.admin-pricing .admin-settings-card { margin-bottom: 1.5rem; }
+
+.admin-pricing__section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--br-border);
+}
+.admin-pricing__section-head .admin-settings-card__title { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+.admin-pricing__add-btn,
+.admin-pricing__add-feature {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: none;
+  border: 1px solid var(--br-border-strong);
+  color: var(--br-green-bright);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.admin-pricing__add-btn:hover,
+.admin-pricing__add-feature:hover { background: rgba(46, 125, 50, 0.12); }
+.admin-pricing__add-feature { margin-top: 0.4rem; padding: 0.3rem 0.6rem; font-size: 0.72rem; }
+
+.admin-pricing__plans {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.admin-pricing__plan-card {
+  background: var(--br-black);
+  border: 1px solid var(--br-border);
+  border-radius: 10px;
+  padding: 1.25rem;
+  position: relative;
+}
+
+.admin-pricing__plan-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.admin-pricing__remove-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: 1px solid var(--br-border);
+  border-radius: 6px;
+  color: var(--br-gray);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all var(--transition);
+}
+.admin-pricing__remove-btn:hover { color: #ef5350; border-color: rgba(239, 83, 80, 0.4); }
+
+.admin-pricing__inline {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.admin-pricing__feature-row {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.admin-pricing__feature-row .form-input { flex: 1; }
+
+.admin-pricing__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--br-gray-light);
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.admin-pricing__fee-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .admin-pricing__inline { grid-template-columns: 1fr; }
+  .admin-pricing__fee-row { grid-template-columns: 1fr; }
+}

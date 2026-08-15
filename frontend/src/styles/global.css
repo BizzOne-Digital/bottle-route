@@ -1,0 +1,314 @@
+/* ===========================
+   BOTTLE ROUTE — GLOBAL STYLES
+   Dark Forest Green Brand Theme
+   =========================== */
+
+:root {
+  /* Brand Palette */
+  --br-black: #0a0f0d;
+  --br-dark: #111a14;
+  --br-surface: #162019;
+  --br-surface-2: #1e2d22;
+  --br-green: #1e4d2b;
+  --br-green-mid: #2a6b3a;
+  --br-green-bright: #2e7d32;
+  --br-accent: #f5a623;
+  --br-accent-hover: #e09412;
+  --br-white: #f8faf8;
+  --br-gray: #8fa896;
+  --br-gray-light: #c8d8cc;
+  --br-border: rgba(46, 125, 50, 0.2);
+  --br-border-strong: rgba(46, 125, 50, 0.4);
+
+  /* Always-dark tokens (independent of light/dark scope, e.g. the "night" CTA banner) */
+  --br-night: #0a0f0d;
+  --br-night-surface: rgba(10, 15, 13, 0.9);
+
+  /* Typography */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Spacing */
+  --section-pad: 5rem 1.5rem;
+  --section-pad-sm: 3rem 1.5rem;
+  --max-width: 1200px;
+
+  /* Transitions */
+  --transition: 0.25s ease;
+  --transition-slow: 0.4s ease;
+}
+
+/* ===========================
+   SCROLL-REVEAL ANIMATION PRIMITIVE
+   =========================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: transform, opacity;
+}
+
+.reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--br-dark);
+  color: var(--br-white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+button { font-family: inherit; cursor: pointer; border: none; }
+
+/* ===========================
+   SCROLLBAR
+   =========================== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--br-black); }
+::-webkit-scrollbar-thumb { background: var(--br-green); border-radius: 3px; }
+
+/* ===========================
+   UTILITY CLASSES
+   =========================== */
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+.section { padding: var(--section-pad); }
+.section-sm { padding: var(--section-pad-sm); }
+.text-accent { color: var(--br-accent); }
+.text-green { color: var(--br-green-bright); }
+.text-gray { color: var(--br-gray); }
+
+/* ===========================
+   BUTTONS
+   =========================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--br-green-bright);
+  color: var(--br-white);
+  border: 2px solid var(--br-green-bright);
+}
+.btn-primary:hover {
+  background: var(--br-green-mid);
+  border-color: var(--br-green-mid);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(46, 125, 50, 0.35);
+}
+
+.btn-accent {
+  background: var(--br-accent);
+  color: var(--br-black);
+  border: 2px solid var(--br-accent);
+}
+.btn-accent:hover {
+  background: var(--br-accent-hover);
+  border-color: var(--br-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 166, 35, 0.35);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--br-white);
+  border: 2px solid rgba(248, 250, 248, 0.4);
+}
+.btn-outline:hover {
+  background: rgba(248, 250, 248, 0.08);
+  border-color: var(--br-white);
+  transform: translateY(-2px);
+}
+
+.btn-outline-green {
+  background: transparent;
+  color: var(--br-green-bright);
+  border: 2px solid var(--br-green-bright);
+}
+.btn-outline-green:hover {
+  background: var(--br-green-bright);
+  color: var(--br-white);
+}
+
+/* ===========================
+   SECTION HEADERS
+   =========================== */
+.section-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--br-accent);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.section-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 2rem;
+  height: 2px;
+  background: var(--br-accent);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  color: var(--br-white);
+  margin-bottom: 1.25rem;
+}
+
+/* ===========================
+   CARDS
+   =========================== */
+.card {
+  background: var(--br-surface);
+  border: 1px solid var(--br-border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all var(--transition);
+}
+.card:hover {
+  border-color: var(--br-border-strong);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* ===========================
+   BADGE
+   =========================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.badge-green { background: rgba(46, 125, 50, 0.15); color: #4caf50; border: 1px solid rgba(46, 125, 50, 0.3); }
+.badge-accent { background: rgba(245, 166, 35, 0.15); color: var(--br-accent); border: 1px solid rgba(245, 166, 35, 0.3); }
+
+/* ===========================
+   DIVIDER
+   =========================== */
+.divider {
+  height: 1px;
+  background: var(--br-border);
+  margin: 0;
+}
+
+/* ===========================
+   FORM ELEMENTS (Admin)
+   =========================== */
+.form-group { margin-bottom: 1.25rem; }
+.form-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--br-gray-light);
+  margin-bottom: 0.5rem;
+}
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  background: var(--br-black);
+  border: 1px solid var(--br-border-strong);
+  border-radius: 6px;
+  color: var(--br-white);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: 0.75rem 1rem;
+  transition: border-color var(--transition);
+  outline: none;
+}
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--br-green-bright);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+}
+.form-textarea { resize: vertical; min-height: 100px; }
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 768px) {
+  :root { --section-pad: 3.5rem 1rem; }
+  .btn { padding: 0.75rem 1.5rem; font-size: 0.85rem; }
+}
+
+/* ===========================
+   PUBLIC SITE — LIGHT THEME
+   Scoped to .site so the admin dashboard keeps its
+   original dark theme untouched.
+   =========================== */
+.site {
+  --br-bg: #f3efe3;
+  --br-ink: #14140f;
+  --br-surface: #ffffff;
+  --br-surface-2: #efe9db;
+  --br-gray: #6f6f65;
+  --br-gray-light: #33332c;
+  --br-border: rgba(20, 20, 15, 0.1);
+  --br-border-strong: rgba(20, 20, 15, 0.18);
+  --br-green-bright: #1e4d2b;
+  --br-green-mid: #163a20;
+
+  background: var(--br-bg);
+  color: var(--br-ink);
+  min-height: 100vh;
+}
+
+.site .section-title { color: var(--br-ink); }
+
+.site .btn-primary {
+  background: var(--br-green-bright);
+  border-color: var(--br-green-bright);
+}
+
+.site .btn-outline {
+  color: var(--br-ink);
+  border: 2px solid rgba(20, 20, 15, 0.35);
+}
+.site .btn-outline:hover {
+  background: rgba(20, 20, 15, 0.06);
+  border-color: var(--br-ink);
+}
