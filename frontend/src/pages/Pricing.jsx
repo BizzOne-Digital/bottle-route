@@ -90,13 +90,11 @@ export default function Pricing() {
             <div className="pricing-fees-table__header">
               <span>Zone</span>
               <span>Delivery Fee</span>
-              <span>Est. Time</span>
             </div>
-            {deliveryFees.map(({ zone, fee, time }) => (
+            {deliveryFees.map(({ zone, fee }) => (
               <div key={zone} className={`pricing-fees-table__row${fee === 'FREE' ? ' pricing-fees-table__row--free' : ''}`}>
                 <span>{zone}</span>
                 <span className="pricing-fees-table__fee">{fee}</span>
-                <span>{time}</span>
               </div>
             ))}
           </div>

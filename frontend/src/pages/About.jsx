@@ -4,17 +4,17 @@ import Reveal from '../components/ui/Reveal';
 import './About.css';
 
 const VALUES = [
-  { icon: Clock, title: '30-Minute Promise', desc: 'We guarantee fast delivery — your order at your door in 30 minutes or less, every time.' },
+  { icon: Clock, title: 'Reliable Delivery', desc: 'We guarantee dependable delivery — your order at your door, every time.' },
   { icon: Shield, title: 'Responsible Service', desc: 'We take compliance seriously. ID verification on every delivery. 19+ only, always.' },
-  { icon: MapPin, title: 'Locally Rooted', desc: 'Built in Canada, for Canadians. We support local brands and proudly serve communities across the country.' },
+  { icon: MapPin, title: 'Locally Rooted', desc: 'Built in Canada, for Canadians. We proudly serve Mississauga, Oakville, Milton & Etobicoke.' },
   { icon: Heart, title: 'Customer First', desc: 'Your experience matters. We\'re here 7 days a week to make sure every order is perfect.' },
 ];
 
 const STATS = [
-  { value: '30', unit: 'min', label: 'Average delivery time' },
   { value: '500+', unit: '', label: 'Products available' },
   { value: '19+', unit: '', label: 'Age verification, always' },
   { value: '24/7', unit: '', label: 'Late-night delivery' },
+  { value: '4', unit: '', label: 'Cities served' },
 ];
 
 export default function About() {
@@ -28,7 +28,7 @@ export default function About() {
           <h1 className="section-title">BUILT FOR THE<br /><span className="text-accent">NIGHT CROWD.</span></h1>
           <p className="about__hero-sub">
             Bottle Route was created with one simple idea: getting your favourite drinks
-            delivered fast, reliably, and without any hassle. After-hours cravings deserve
+            delivered reliably and without any hassle. After-hours cravings deserve
             after-hours solutions.
           </p>
         </Reveal>
@@ -56,7 +56,7 @@ export default function About() {
               <div className="about__story-card-inner">
                 <div className="about__story-emblem">🍁</div>
                 <p className="about__story-card-title">Proudly Canadian</p>
-                <p className="about__story-card-sub">Serving communities across Canada</p>
+                <p className="about__story-card-sub">Serving Mississauga, Oakville, Milton & Etobicoke</p>
               </div>
             </div>
             <div className="about__story-badge">
@@ -70,7 +70,7 @@ export default function About() {
             <p>
               Bottle Route started as a response to a simple frustration — why is it so hard
               to get a good bottle of whisky delivered when you actually need it? We built
-              the answer. A fast, reliable, and easy-to-use platform that brings premium
+              the answer. A reliable, easy-to-use platform that brings premium
               alcohol and convenience products straight to your door.
             </p>
             <p style={{ marginTop: '1rem' }}>

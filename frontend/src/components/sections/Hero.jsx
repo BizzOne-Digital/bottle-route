@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ShoppingBag, ChevronRight, Clock, Shield, MapPin } from 'lucide-react';
+import { ShoppingBag, ChevronRight, Shield, MapPin } from 'lucide-react';
 import './Hero.css';
 
 export default function Hero() {
@@ -14,21 +14,17 @@ export default function Hero() {
         {/* Left Content */}
         <div className="hero__content">
           <div className="hero__eyebrow">
-            <span className="hero__badge">
-              <Clock size={13} /> 30-Minute Delivery
-            </span>
             <span className="hero__badge hero__badge--maple">🍁 Proudly Canadian</span>
           </div>
 
           <h1 className="hero__headline">
             <span className="hero__headline-line">DRINKS AT</span>
-            <span className="hero__headline-line">YOUR DOOR IN</span>
-            <span className="hero__headline-line hero__headline-accent">30 MINUTES.</span>
+            <span className="hero__headline-line hero__headline-accent">YOUR DOOR.</span>
           </h1>
 
           <p className="hero__sub">
-            Premium alcohol & convenience delivered fast to your door.
-            19+ service across Canada.
+            Premium alcohol & convenience delivered to your door.
+            19+ service in Mississauga, Oakville, Milton & Etobicoke.
           </p>
 
           <div className="hero__actions">
@@ -43,13 +39,8 @@ export default function Hero() {
 
           <div className="hero__trust">
             <div className="hero__trust-item">
-              <Clock size={15} />
-              <span>30 Min Delivery</span>
-            </div>
-            <div className="hero__trust-sep" />
-            <div className="hero__trust-item">
               <MapPin size={15} />
-              <span>Across Canada</span>
+              <span>Mississauga, Oakville, Milton & Etobicoke</span>
             </div>
             <div className="hero__trust-sep" />
             <div className="hero__trust-item">
@@ -64,10 +55,9 @@ export default function Hero() {
       <div className="hero__bar">
         <div className="container hero__bar-inner">
           {[
-            { icon: '⚡', text: 'Fastest Delivery in Your Area' },
+            { icon: '📍', text: 'Serving Mississauga, Oakville, Milton & Etobicoke' },
             { icon: '🍾', text: 'Top Brands & Local Favourites' },
             { icon: '📱', text: 'Easy Online Ordering' },
-            { icon: '🔒', text: 'Secure Checkout' },
           ].map(({ icon, text }) => (
             <div key={text} className="hero__bar-item">
               <span className="hero__bar-icon">{icon}</span>

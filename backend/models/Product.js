@@ -5,7 +5,7 @@ const productSchema = new mongoose.Schema({
   category: {
     type: String,
     required: true,
-    enum: ['vodka', 'whisky', 'tequila', 'convenience', 'other'],
+    enum: ['vodka', 'whisky', 'tequila', 'rum', 'brandy', 'beer', 'cooler', 'convenience', 'other'],
   },
   description: { type: String, trim: true },
   price: { type: Number, required: true, min: 0 },

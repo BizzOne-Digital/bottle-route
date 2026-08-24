@@ -168,7 +168,7 @@
 .home__pillars { background: var(--br-surface); border-top: 1px solid var(--br-border); border-bottom: 1px solid var(--br-border); }
 .home__pillars-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 2rem;
 }
 
@@ -183,7 +183,7 @@
   .home__how-grid { grid-template-columns: 1fr; }
   .home__how-grid::before { display: none; }
   .home__products-grid { grid-template-columns: 1fr 1fr; }
-  .home__pillars-grid { grid-template-columns: 1fr 1fr; }
+  .home__pillars-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 550px) {
   .home__categories-grid { grid-template-columns: 1fr; }

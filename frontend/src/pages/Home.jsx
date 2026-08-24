@@ -11,13 +11,17 @@ const CATEGORIES = [
   { id: 'vodka', label: 'Vodka', desc: 'Premium vodka for any occasion.', emoji: '🧊' },
   { id: 'whisky', label: 'Whisky', desc: 'Smooth, bold & always classic.', emoji: '🥃' },
   { id: 'tequila', label: 'Tequila', desc: '100% agave. 100% good times.', emoji: '🌵' },
+  { id: 'rum', label: 'Rum', desc: 'Smooth and bold, straight or mixed.', emoji: '🏝️' },
+  { id: 'brandy', label: 'Brandy', desc: 'Rich, warming & full of character.', emoji: '🍯' },
+  { id: 'beer', label: 'Beers', desc: 'Cold brews, local & imported picks.', emoji: '🍺' },
+  { id: 'cooler', label: 'Coolers', desc: 'Light, fruity & easy to enjoy.', emoji: '🧉' },
   { id: 'convenience', label: 'Convenience', desc: 'Mixers, snacks, essentials & more.', emoji: '🛒' },
 ];
 
 const HOW_IT_WORKS = [
   { step: '01', title: 'Choose', desc: 'Browse our wide selection of drinks & essentials.', icon: Package },
   { step: '02', title: 'Order', desc: 'Place your order quickly & securely online.', icon: Zap },
-  { step: '03', title: 'Delivered', desc: 'We deliver to your door in as little as 30 minutes.', icon: Clock },
+  { step: '03', title: 'Delivered', desc: 'We deliver your order right to your door.', icon: Clock },
 ];
 
 export default function Home() {
@@ -131,10 +135,11 @@ export default function Home() {
       <section className="section-sm home__pillars">
         <div className="container home__pillars-grid">
           {[
-            { icon: '⚡', title: 'Fast Delivery', desc: 'As fast as 30 minutes to your door.' },
+            { icon: '⚡', title: 'Fast Delivery', desc: 'Quick delivery right to your door.' },
             { icon: '🍾', title: 'Wide Selection', desc: 'Top brands & local favourites.' },
             { icon: '📱', title: 'Easy Ordering', desc: 'Simple, secure & hassle-free.' },
-            { icon: '📍', title: 'Local Service', desc: 'Proudly serving communities across Canada.' },
+            { icon: '🍔', title: 'Food Delivery', desc: 'Order food alongside your drinks.' },
+            { icon: '📍', title: 'Local Service', desc: 'Proudly serving Mississauga, Oakville, Milton & Etobicoke.' },
           ].map(({ icon, title, desc }, i) => (
             <Reveal key={title} delay={i * 80}>
               <div className="home__pillar">

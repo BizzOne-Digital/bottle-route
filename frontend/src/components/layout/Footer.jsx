@@ -37,7 +37,7 @@ export default function Footer() {
           <div className="footer__col">
             <h4 className="footer__col-title">Categories</h4>
             <ul>
-              {['Vodka', 'Whisky', 'Tequila', 'Convenience', 'All Products'].map((item) => (
+              {['Vodka', 'Whisky', 'Tequila', 'Rum', 'Brandy', 'Beers', 'Coolers', 'Convenience', 'All Products'].map((item) => (
                 <li key={item}><Link to="/shop">{item}</Link></li>
               ))}
             </ul>

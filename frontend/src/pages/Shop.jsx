@@ -6,7 +6,7 @@ import Reveal from '../components/ui/Reveal';
 import { productsApi } from '../utils/api';
 import './Shop.css';
 
-const CATEGORIES = ['all', 'vodka', 'whisky', 'tequila', 'convenience', 'other'];
+const CATEGORIES = ['all', 'vodka', 'whisky', 'tequila', 'rum', 'brandy', 'beer', 'cooler', 'convenience', 'other'];
 
 export default function Shop() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -36,7 +36,7 @@ export default function Shop() {
         <Reveal className="container">
           <p className="section-eyebrow">Our Selection</p>
           <h1 className="section-title">SHOP ALL PRODUCTS</h1>
-          <p className="shop__sub">Premium alcohol & convenience delivered in 30 minutes.</p>
+          <p className="shop__sub">Premium alcohol & convenience delivered to your door.</p>
         </Reveal>
       </div>
 

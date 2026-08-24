@@ -8,7 +8,7 @@ const CONTACT_INFO = [
   { icon: Phone, label: 'Phone', value: '(416) 697-3510', href: 'tel:4166973510' },
   { icon: Mail, label: 'Email', value: 'info@bottleroute.ca', href: 'mailto:info@bottleroute.ca' },
   { icon: Clock, label: 'Hours', value: 'Daily: 10:00 AM – 3:00 AM', href: null },
-  { icon: MapPin, label: 'Service Area', value: 'Across Canada', href: null },
+  { icon: MapPin, label: 'Service Area', value: 'Mississauga, Oakville, Milton & Etobicoke', href: null },
 ];
 
 export default function Contact() {

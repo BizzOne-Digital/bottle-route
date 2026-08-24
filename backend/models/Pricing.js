@@ -14,7 +14,6 @@ const planSchema = new mongoose.Schema({
 const feeSchema = new mongoose.Schema({
   zone: { type: String, required: true },
   fee: { type: String, required: true },
-  time: { type: String, required: true },
 }, { _id: false });
 
 const pricingSchema = new mongoose.Schema({

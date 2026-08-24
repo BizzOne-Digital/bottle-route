@@ -7,7 +7,7 @@ import './AdminPricing.css';
 const emptyPlan = () => ({
   name: '', price: '', period: '', desc: '', features: [''], cta: 'Order Now', href: '/shop', highlight: false,
 });
-const emptyFee = () => ({ zone: '', fee: '', time: '' });
+const emptyFee = () => ({ zone: '', fee: '' });
 
 export default function AdminPricing() {
   const [plans, setPlans] = useState([]);
@@ -144,7 +144,6 @@ export default function AdminPricing() {
             <div key={i} className="admin-pricing__fee-row">
               <input className="form-input" value={fee.zone} onChange={(e) => updateFee(i, 'zone', e.target.value)} placeholder="Zone (e.g. Within 5 km)" />
               <input className="form-input" value={fee.fee} onChange={(e) => updateFee(i, 'fee', e.target.value)} placeholder="Fee ($3.99 / FREE)" />
-              <input className="form-input" value={fee.time} onChange={(e) => updateFee(i, 'time', e.target.value)} placeholder="Est. time" />
               <button type="button" className="admin-pricing__remove-btn" onClick={() => removeFee(i)}><Trash2 size={14} /></button>
             </div>
           ))}

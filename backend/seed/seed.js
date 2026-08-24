@@ -79,7 +79,7 @@ const PRICING = {
       desc: 'Perfect for casual orders.',
       features: [
         'Delivery fee: $5.99 per order',
-        'Standard 30-min delivery',
+        'Standard delivery included',
         'All product categories',
         'Order tracking',
         'Age verification on delivery',
@@ -95,7 +95,7 @@ const PRICING = {
       desc: 'Best value for regular customers.',
       features: [
         'Free delivery on all orders',
-        'Priority queue — faster delivery',
+        'Priority queue for members',
         'Exclusive member deals',
         'Early access to new products',
         'Order tracking',
@@ -124,10 +124,10 @@ const PRICING = {
     },
   ],
   deliveryFees: [
-    { zone: 'Within 5 km', fee: '$3.99', time: '20-30 min' },
-    { zone: '5–10 km', fee: '$5.99', time: '30-45 min' },
-    { zone: '10–20 km', fee: '$7.99', time: '45-60 min' },
-    { zone: 'Member (any zone)', fee: 'FREE', time: 'Priority' },
+    { zone: 'Within 5 km', fee: '$3.99' },
+    { zone: '5–10 km', fee: '$5.99' },
+    { zone: '10–20 km', fee: '$7.99' },
+    { zone: 'Member (any zone)', fee: 'FREE' },
   ],
 };
 
