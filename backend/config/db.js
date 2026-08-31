@@ -9,7 +9,14 @@ const connectDB = async () => {
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
-    cached.promise = mongoose.connect(process.env.MONGODB_URI).then((m) => {
+    cached.promise = mongoose.connect(process.env.MONGODB_URI, {
+      // Serverless-friendly: keep each function instance's pool tiny so many
+      // concurrent cold starts against a shared/low-tier cluster don't exhaust
+      // its connection limit, and fail fast instead of hanging on a full pool.
+      maxPoolSize: 5,
+      serverSelectionTimeoutMS: 5000,
+      socketTimeoutMS: 20000,
+    }).then((m) => {
       console.log(`MongoDB Connected: ${m.connection.host}`);
       return m;
     });
