@@ -19,23 +19,32 @@ export default function AdminLayout() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleLogout = () => {
     logout();
     navigate('/admin/login');
   };
 
+  const showLabels = sidebarOpen || mobileOpen;
+
   return (
     <div className={`admin-layout${sidebarOpen ? '' : ' admin-layout--collapsed'}`}>
+      {/* Mobile overlay */}
+      {mobileOpen && <div className="admin-mobile-overlay" onClick={() => setMobileOpen(false)} />}
+
       {/* Sidebar */}
-      <aside className="admin-sidebar">
+      <aside className={`admin-sidebar${mobileOpen ? ' admin-sidebar--open' : ''}`}>
         <div className="admin-sidebar__header">
           <Link to="/" className="admin-sidebar__logo">
             <div className="admin-sidebar__logo-icon"><Zap size={16} /></div>
-            {sidebarOpen && <span>BOTTLE ROUTE</span>}
+            {showLabels && <span>BOTTLE ROUTE</span>}
           </Link>
-          <button className="admin-sidebar__toggle" onClick={() => setSidebarOpen(!sidebarOpen)}>
-            {sidebarOpen ? <X size={18} /> : <Menu size={18} />}
+          <button
+            className="admin-sidebar__toggle"
+            onClick={() => (mobileOpen ? setMobileOpen(false) : setSidebarOpen(!sidebarOpen))}
+          >
+            {showLabels ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
 
@@ -45,9 +54,10 @@ export default function AdminLayout() {
               key={href}
               to={href}
               className={`admin-sidebar__link${pathname === href ? ' admin-sidebar__link--active' : ''}`}
+              onClick={() => setMobileOpen(false)}
             >
               <Icon size={18} />
-              {sidebarOpen && <span>{label}</span>}
+              {showLabels && <span>{label}</span>}
             </Link>
           ))}
         </nav>
@@ -57,7 +67,7 @@ export default function AdminLayout() {
             <div className="admin-sidebar__avatar">
               {admin?.name?.charAt(0)?.toUpperCase() || 'A'}
             </div>
-            {sidebarOpen && (
+            {showLabels && (
               <div className="admin-sidebar__user-info">
                 <p className="admin-sidebar__user-name">{admin?.name}</p>
                 <p className="admin-sidebar__user-role">{admin?.role}</p>
@@ -78,6 +88,9 @@ export default function AdminLayout() {
       {/* Main */}
       <div className="admin-main">
         <header className="admin-topbar">
+          <button className="admin-topbar__menu-btn" onClick={() => setMobileOpen(true)} aria-label="Open menu">
+            <Menu size={20} />
+          </button>
           <div className="admin-topbar__breadcrumb">
             <span>Admin</span>
             <ChevronRight size={14} />

@@ -149,3 +149,16 @@
 }
 .admin-table__btn:hover { color: var(--br-white); border-color: var(--br-border-strong); background: var(--br-surface-2); }
 .admin-table__btn--danger:hover { color: #ef5350; border-color: rgba(239, 83, 80, 0.4); }
+
+@media (max-width: 768px) {
+  .admin-modal__grid { grid-template-columns: 1fr; }
+  .admin-modal__toggles { gap: 1.25rem; flex-wrap: wrap; }
+}
+
+@media (max-width: 480px) {
+  .admin-modal { padding: 1.25rem; border-radius: 10px; }
+  .admin-modal__title { font-size: 1.05rem; margin-bottom: 1.1rem; }
+  .admin-modal__actions { flex-wrap: wrap; }
+  .admin-modal__actions .btn { flex: 1; justify-content: center; }
+  .admin-upload-zone { height: 140px; }
+}
