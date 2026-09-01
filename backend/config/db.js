@@ -12,9 +12,13 @@ const connectDB = async () => {
     cached.promise = mongoose.connect(process.env.MONGODB_URI, {
       // Serverless-friendly: keep each function instance's pool tiny so many
       // concurrent cold starts against a shared/low-tier cluster don't exhaust
-      // its connection limit, and fail fast instead of hanging on a full pool.
+      // its connection limit. serverSelectionTimeoutMS is generous (not
+      // aggressively short) because a truly cold Vercel invocation doing DNS
+      // SRV lookup + TLS + auth against Atlas can genuinely take several
+      // seconds — cutting this too short causes false failures on the first
+      // request after idle, not just on real outages.
       maxPoolSize: 5,
-      serverSelectionTimeoutMS: 5000,
+      serverSelectionTimeoutMS: 15000,
       socketTimeoutMS: 20000,
     }).then((m) => {
       console.log(`MongoDB Connected: ${m.connection.host}`);
