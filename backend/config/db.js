@@ -6,7 +6,16 @@ let cached = global._mongooseConn;
 if (!cached) cached = global._mongooseConn = { conn: null, promise: null };
 
 const connectDB = async () => {
-  if (cached.conn) return cached.conn;
+  // A cached connection can go stale (Atlas idle timeout, dropped socket on
+  // a reused container) — readyState 1 is the only "safe to reuse" state.
+  // Reusing a dead connection blindly is what caused requests to hang until
+  // timeout after ~15+ minutes of the function sitting idle.
+  if (cached.conn && cached.conn.connection.readyState === 1) return cached.conn;
+
+  if (cached.conn && cached.conn.connection.readyState !== 1) {
+    cached.conn = null;
+    cached.promise = null;
+  }
 
   if (!cached.promise) {
     cached.promise = mongoose.connect(process.env.MONGODB_URI, {
