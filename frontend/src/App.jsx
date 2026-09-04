@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './hooks/useAuth';
+import { OrderNowModalProvider } from './context/OrderNowModalContext';
 
 // Layouts
 import PublicLayout from './components/layout/PublicLayout';
@@ -30,6 +31,7 @@ import './styles/global.css';
 export default function App() {
   return (
     <AuthProvider>
+      <OrderNowModalProvider>
       <BrowserRouter>
         <ScrollToTop />
         <Toaster
@@ -77,6 +79,7 @@ export default function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
+      </OrderNowModalProvider>
     </AuthProvider>
   );
 }

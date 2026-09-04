@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ShoppingBag, Clock, Shield, MapPin, Heart } from 'lucide-react';
 import Reveal from '../components/ui/Reveal';
+import { useOrderNowModal } from '../context/OrderNowModalContext';
 import './About.css';
 
 const VALUES = [
@@ -18,6 +19,7 @@ const STATS = [
 ];
 
 export default function About() {
+  const { openOrderNowModal } = useOrderNowModal();
   return (
     <main className="about">
       {/* Hero */}
@@ -117,7 +119,7 @@ export default function About() {
           <h2 className="section-title">READY TO ORDER?</h2>
           <p>Your next drink is just a few clicks away.</p>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', marginTop: '2rem' }}>
-            <Link to="/shop" className="btn btn-accent">Order Now</Link>
+            <button type="button" className="btn btn-accent" onClick={openOrderNowModal}>Order Now</button>
             <Link to="/contact" className="btn btn-outline">Contact Us</Link>
           </div>
         </Reveal>

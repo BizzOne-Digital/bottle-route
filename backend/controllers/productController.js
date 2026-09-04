@@ -3,10 +3,12 @@ const { cloudinary } = require('../config/cloudinary');
 
 exports.getProducts = async (req, res) => {
   try {
-    const { category, featured, inStock } = req.query;
+    const { category, featured, premium, regularsFavourite, inStock } = req.query;
     const filter = {};
     if (category) filter.category = category;
     if (featured === 'true') filter.featured = true;
+    if (premium === 'true') filter.premium = true;
+    if (regularsFavourite === 'true') filter.regularsFavourite = true;
     if (inStock === 'true') filter.inStock = true;
 
     const products = await Product.find(filter).sort({ sortOrder: 1, createdAt: -1 });

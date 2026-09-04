@@ -14,6 +14,8 @@ const productSchema = new mongoose.Schema({
   imagePublicId: { type: String },
   inStock: { type: Boolean, default: true },
   featured: { type: Boolean, default: false },
+  premium: { type: Boolean, default: false },
+  regularsFavourite: { type: Boolean, default: false },
   sortOrder: { type: Number, default: 0 },
 }, { timestamps: true });
 

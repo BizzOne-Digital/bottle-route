@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { productsApi } from '../../utils/api';
 import './AdminProducts.css';
 
-const BLANK = { name: '', category: 'vodka', description: '', price: '', volume: '750ml', inStock: true, featured: false };
+const BLANK = { name: '', category: 'vodka', description: '', price: '', volume: '750ml', inStock: true, featured: false, premium: false, regularsFavourite: false };
 const CATS = ['vodka', 'whisky', 'tequila', 'convenience', 'other'];
 
 export default function AdminProducts() {
@@ -53,6 +53,8 @@ export default function AdminProducts() {
       volume: product.volume || '',
       inStock: product.inStock,
       featured: product.featured,
+      premium: product.premium,
+      regularsFavourite: product.regularsFavourite,
     });
     setImagePreview(product.image);
     setImageFile(null);
@@ -174,6 +176,14 @@ export default function AdminProducts() {
                 <label className="admin-toggle">
                   <input type="checkbox" checked={form.featured} onChange={e => setForm({ ...form, featured: e.target.checked })} />
                   <span>Featured on Homepage</span>
+                </label>
+                <label className="admin-toggle">
+                  <input type="checkbox" checked={form.premium} onChange={e => setForm({ ...form, premium: e.target.checked })} />
+                  <span>Premium</span>
+                </label>
+                <label className="admin-toggle">
+                  <input type="checkbox" checked={form.regularsFavourite} onChange={e => setForm({ ...form, regularsFavourite: e.target.checked })} />
+                  <span>Regulars' Favourite</span>
                 </label>
               </div>
 

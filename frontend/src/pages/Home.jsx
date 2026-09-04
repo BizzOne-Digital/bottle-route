@@ -5,6 +5,7 @@ import Hero from '../components/sections/Hero';
 import ProductCard from '../components/ui/ProductCard';
 import Reveal from '../components/ui/Reveal';
 import { productsApi } from '../utils/api';
+import { useOrderNowModal } from '../context/OrderNowModalContext';
 import './Home.css';
 
 const CATEGORIES = [
@@ -26,10 +27,19 @@ const HOW_IT_WORKS = [
 
 export default function Home() {
   const [featuredProducts, setFeaturedProducts] = useState([]);
+  const [regularsFavourites, setRegularsFavourites] = useState([]);
+  const [premiumProducts, setPremiumProducts] = useState([]);
+  const { openOrderNowModal } = useOrderNowModal();
 
   useEffect(() => {
-    productsApi.getAll({ featured: true })
-      .then(({ data }) => setFeaturedProducts(data.data.slice(0, 6)))
+    productsApi.getAll()
+      .then(({ data }) => setFeaturedProducts(data.data))
+      .catch(() => {});
+    productsApi.getAll({ regularsFavourite: true })
+      .then(({ data }) => setRegularsFavourites(data.data))
+      .catch(() => {});
+    productsApi.getAll({ premium: true })
+      .then(({ data }) => setPremiumProducts(data.data))
       .catch(() => {});
   }, []);
 
@@ -88,8 +98,8 @@ export default function Home() {
             <Reveal>
               <div className="home__featured-header">
                 <div>
-                  <p className="section-eyebrow">Top Picks</p>
-                  <h2 className="section-title">FEATURED PRODUCTS</h2>
+                  <p className="section-eyebrow">Full Selection</p>
+                  <h2 className="section-title">OUR PRODUCTS</h2>
                 </div>
                 <Link to="/shop" className="btn btn-outline-green">
                   View All <ChevronRight size={16} />
@@ -98,6 +108,53 @@ export default function Home() {
             </Reveal>
             <div className="home__products-grid">
               {featuredProducts.map((p, i) => (
+                <Reveal key={p._id} delay={i * 80}>
+                  <ProductCard product={p} />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Regulars' Favourite */}
+      {regularsFavourites.length > 0 && (
+        <section className="section home__regulars">
+          <div className="container">
+            <Reveal>
+              <div className="home__regulars-header">
+                <div>
+                  <p className="section-eyebrow">Customer Favourites</p>
+                  <h2 className="section-title">OUR REGULARS' FAVOURITE</h2>
+                  <p className="home__regulars-sub">We keep favourite products for our regular customers.</p>
+                </div>
+              </div>
+            </Reveal>
+            <div className="home__products-grid">
+              {regularsFavourites.map((p, i) => (
+                <Reveal key={p._id} delay={i * 80}>
+                  <ProductCard product={p} />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Premium Selection */}
+      {premiumProducts.length > 0 && (
+        <section className="section home__premium">
+          <div className="container">
+            <Reveal>
+              <div className="home__premium-header">
+                <div>
+                  <p className="section-eyebrow">Top Shelf</p>
+                  <h2 className="section-title">PREMIUM SELECTION</h2>
+                </div>
+              </div>
+            </Reveal>
+            <div className="home__products-grid">
+              {premiumProducts.map((p, i) => (
                 <Reveal key={p._id} delay={i * 80}>
                   <ProductCard product={p} />
                 </Reveal>
@@ -126,7 +183,7 @@ export default function Home() {
                 <p className="home__cta-badge-sub">Top Shelf. Your Route.</p>
               </div>
             </div>
-            <Link to="/shop" className="btn btn-accent">Order Now →</Link>
+            <button type="button" onClick={openOrderNowModal} className="btn btn-accent">Order Now →</button>
           </div>
         </Reveal>
       </section>

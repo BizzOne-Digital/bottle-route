@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ShoppingBag, Menu, X, Zap } from 'lucide-react';
+import { useOrderNowModal } from '../../context/OrderNowModalContext';
 import './Navbar.css';
 
 const NAV_LINKS = [
@@ -8,7 +9,6 @@ const NAV_LINKS = [
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
   { label: 'Gallery', href: '/gallery' },
-  { label: 'Pricing', href: '/pricing' },
   { label: 'Shop', href: '/shop' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -17,6 +17,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { pathname } = useLocation();
+  const { openOrderNowModal } = useOrderNowModal();
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
@@ -50,10 +51,10 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="navbar__actions">
-          <Link to="/shop" className="btn btn-accent navbar__cta">
+          <button type="button" onClick={openOrderNowModal} className="btn btn-accent navbar__cta">
             <ShoppingBag size={16} />
             Order Now
-          </Link>
+          </button>
           <button
             className="navbar__hamburger"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -71,9 +72,9 @@ export default function Navbar() {
             {l.label}
           </Link>
         ))}
-        <Link to="/shop" className="btn btn-accent" style={{ alignSelf: 'flex-start', marginTop: '1rem' }}>
+        <button type="button" onClick={openOrderNowModal} className="btn btn-accent" style={{ alignSelf: 'flex-start', marginTop: '1rem' }}>
           <ShoppingBag size={16} /> Order Now
-        </Link>
+        </button>
       </div>
     </header>
   );

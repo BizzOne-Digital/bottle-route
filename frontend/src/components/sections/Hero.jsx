@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { ShoppingBag, ChevronRight, Shield, MapPin } from 'lucide-react';
+import { useOrderNowModal } from '../../context/OrderNowModalContext';
 import './Hero.css';
 
 export default function Hero() {
+  const { openOrderNowModal } = useOrderNowModal();
   return (
     <section className="hero">
       {/* Background layer */}
@@ -28,10 +30,10 @@ export default function Hero() {
           </p>
 
           <div className="hero__actions">
-            <Link to="/shop" className="btn btn-accent hero__btn-primary">
+            <button type="button" onClick={openOrderNowModal} className="btn btn-accent hero__btn-primary">
               <ShoppingBag size={18} />
               Order Now
-            </Link>
+            </button>
             <Link to="/shop" className="btn btn-outline hero__btn-secondary">
               View Products <ChevronRight size={16} />
             </Link>

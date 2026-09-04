@@ -108,6 +108,29 @@
   gap: 1.25rem;
 }
 
+/* Regulars' Favourite */
+.home__regulars { background: var(--br-surface); }
+.home__regulars-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.home__regulars-sub { color: var(--br-gray); font-size: 0.9rem; margin-top: 0.5rem; }
+
+/* Premium Selection */
+.home__premium { background: var(--br-bg); }
+.home__premium-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 /* CTA Banner */
 .home__cta-banner {
   position: relative;
@@ -190,4 +213,6 @@
   .home__products-grid { grid-template-columns: 1fr; }
   .home__pillars-grid { grid-template-columns: 1fr 1fr; }
   .home__featured-header { flex-direction: column; align-items: flex-start; }
+  .home__regulars-header { flex-direction: column; align-items: flex-start; }
+  .home__premium-header { flex-direction: column; align-items: flex-start; }
 }
