@@ -1,19 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Phone, Mail, Clock, MapPin, Send, Shield } from 'lucide-react';
 import toast from 'react-hot-toast';
 import Reveal from '../components/ui/Reveal';
+import { settingsApi } from '../utils/api';
 import './Contact.css';
-
-const CONTACT_INFO = [
-  { icon: Phone, label: 'Phone', value: '(416) 697-3510', href: 'tel:4166973510' },
-  { icon: Mail, label: 'Email', value: 'info@bottleroute.ca', href: 'mailto:info@bottleroute.ca' },
-  { icon: Clock, label: 'Hours', value: 'Daily: 10:00 AM – 3:00 AM', href: null },
-  { icon: MapPin, label: 'Service Area', value: 'Mississauga, Oakville, Milton & Etobicoke', href: null },
-];
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
   const [sending, setSending] = useState(false);
+  const [settings, setSettings] = useState(null);
+
+  useEffect(() => {
+    settingsApi.get().then(({ data }) => setSettings(data.data)).catch(() => {});
+  }, []);
+
+  const phoneNumber = settings?.phone || '';
+  const email = settings?.email || 'info@bottleroute.ca';
+
+  const CONTACT_INFO = [
+    ...(phoneNumber ? [{ icon: Phone, label: 'Phone', value: phoneNumber, href: `tel:${phoneNumber}` }] : []),
+    { icon: Mail, label: 'Email', value: email, href: `mailto:${email}` },
+    { icon: Clock, label: 'Hours', value: 'Daily: 10:00 AM – 3:00 AM', href: null },
+    { icon: MapPin, label: 'Service Area', value: 'Mississauga, Oakville, Milton & Etobicoke', href: null },
+  ];
 
   const f = (key) => ({
     value: form[key],

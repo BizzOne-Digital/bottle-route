@@ -1,8 +1,19 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Zap, Instagram, Facebook, Twitter } from 'lucide-react';
+import { settingsApi } from '../../utils/api';
 import './Footer.css';
 
 export default function Footer() {
+  const [settings, setSettings] = useState(null);
+
+  useEffect(() => {
+    settingsApi.get().then(({ data }) => setSettings(data.data)).catch(() => {});
+  }, []);
+
+  const phone = settings?.phone || '';
+  const email = settings?.email || 'info@bottleroute.ca';
+
   return (
     <footer className="footer">
       <div className="footer__top">
@@ -10,10 +21,16 @@ export default function Footer() {
           {/* Brand */}
           <div className="footer__brand">
             <Link to="/" className="footer__logo">
-              <span className="navbar__logo-icon" style={{ background: 'var(--br-green-bright)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 32, height: 32, borderRadius: 6 }}>
-                <Zap size={18} />
-              </span>
-              <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', letterSpacing: '0.05em' }}>BOTTLE ROUTE</span>
+              {settings?.logo ? (
+                <img src={settings.logo} alt="Bottle Route" style={{ height: 40, width: 'auto', objectFit: 'contain' }} />
+              ) : (
+                <>
+                  <span className="navbar__logo-icon" style={{ background: 'var(--br-green-bright)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 32, height: 32, borderRadius: 6 }}>
+                    <Zap size={18} />
+                  </span>
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', letterSpacing: '0.05em' }}>BOTTLE ROUTE</span>
+                </>
+              )}
             </Link>
             <p className="footer__tagline">Drinks Delivered. Good Times Guaranteed.</p>
             <div className="footer__social">
@@ -47,8 +64,8 @@ export default function Footer() {
           <div className="footer__col">
             <h4 className="footer__col-title">Contact</h4>
             <ul className="footer__contact">
-              <li><span>Phone:</span> <a href="tel:4166973510">(416) 697-3510</a></li>
-              <li><span>Email:</span> <a href="mailto:info@bottleroute.ca">info@bottleroute.ca</a></li>
+              {phone && <li><span>Phone:</span> <a href={`tel:${phone}`}>{phone}</a></li>}
+              <li><span>Email:</span> <a href={`mailto:${email}`}>{email}</a></li>
               <li><span>Hours:</span> 10 AM — 3 AM daily</li>
             </ul>
           </div>
