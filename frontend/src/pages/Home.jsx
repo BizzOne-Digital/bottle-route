@@ -1,23 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, Zap, Package, Clock, Star } from 'lucide-react';
+import { ChevronRight, Package, Zap, Clock, Star } from 'lucide-react';
 import Hero from '../components/sections/Hero';
 import ProductCard from '../components/ui/ProductCard';
 import Reveal from '../components/ui/Reveal';
 import { productsApi } from '../utils/api';
 import { useOrderNowModal } from '../context/OrderNowModalContext';
 import './Home.css';
-
-const CATEGORIES = [
-  { id: 'vodka', label: 'Vodka', desc: 'Premium vodka for any occasion.', emoji: '🧊' },
-  { id: 'whisky', label: 'Whisky', desc: 'Smooth, bold & always classic.', emoji: '🥃' },
-  { id: 'tequila', label: 'Tequila', desc: '100% agave. 100% good times.', emoji: '🌵' },
-  { id: 'rum', label: 'Rum', desc: 'Smooth and bold, straight or mixed.', emoji: '🏝️' },
-  { id: 'brandy', label: 'Brandy', desc: 'Rich, warming & full of character.', emoji: '🍯' },
-  { id: 'beer', label: 'Beers', desc: 'Cold brews, local & imported picks.', emoji: '🍺' },
-  { id: 'cooler', label: 'Coolers', desc: 'Light, fruity & easy to enjoy.', emoji: '🧉' },
-  { id: 'convenience', label: 'Convenience', desc: 'Mixers, snacks, essentials & more.', emoji: '🛒' },
-];
 
 const HOW_IT_WORKS = [
   { step: '01', title: 'Choose', desc: 'Browse our wide selection of drinks & essentials.', icon: Package },
@@ -46,26 +35,6 @@ export default function Home() {
   return (
     <main className="home">
       <Hero />
-
-      {/* Categories */}
-      <section className="section home__categories">
-        <div className="container">
-          <div className="home__categories-grid">
-            {CATEGORIES.map((cat, i) => (
-              <Reveal key={cat.id} delay={i * 80}>
-                <Link to={`/shop?category=${cat.id}`} className="home__cat-card">
-                  <span className="home__cat-emoji">{cat.emoji}</span>
-                  <div>
-                    <h3 className="home__cat-title">{cat.label}</h3>
-                    <p className="home__cat-desc">{cat.desc}</p>
-                  </div>
-                  <span className="home__cat-arrow"><ChevronRight size={18} /></span>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* How it works */}
       <section className="section home__how">

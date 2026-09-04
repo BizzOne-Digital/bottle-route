@@ -2,7 +2,7 @@ import { ShoppingCart, Heart } from 'lucide-react';
 import './ProductCard.css';
 
 export default function ProductCard({ product }) {
-  const { name, description, price, volume, image, inStock } = product;
+  const { name, description, price, volume, image, inStock, category } = product;
 
   return (
     <div className="product-card">
@@ -13,6 +13,7 @@ export default function ProductCard({ product }) {
             <Heart size={16} />
           </button>
         </div>
+        {category && <span className="product-card__cat">{category}</span>}
         {!inStock && <div className="product-card__oos">Out of Stock</div>}
       </div>
 

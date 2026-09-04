@@ -54,6 +54,21 @@
 }
 .product-card__wishlist:hover { color: #ef5350; border-color: #ef5350; }
 
+.product-card__cat {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  background: var(--br-surface);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--br-accent);
+  border: 1px solid var(--br-border-strong);
+}
+
 .product-card__oos {
   position: absolute;
   inset: 0;
