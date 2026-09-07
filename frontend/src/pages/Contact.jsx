@@ -7,7 +7,6 @@ import './Contact.css';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
-  const [sending, setSending] = useState(false);
   const [settings, setSettings] = useState(null);
 
   useEffect(() => {
@@ -20,7 +19,7 @@ export default function Contact() {
   const CONTACT_INFO = [
     ...(phoneNumber ? [{ icon: Phone, label: 'Phone', value: phoneNumber, href: `tel:${phoneNumber}` }] : []),
     { icon: Mail, label: 'Email', value: email, href: `mailto:${email}` },
-    { icon: Clock, label: 'Hours', value: 'Daily: 10:00 AM – 3:00 AM', href: null },
+    { icon: Clock, label: 'Hours', value: 'Open Anytime', href: null },
     { icon: MapPin, label: 'Service Area', value: 'Mississauga, Oakville, Milton & Etobicoke', href: null },
   ];
 
@@ -29,13 +28,28 @@ export default function Contact() {
     onChange: (e) => setForm({ ...form, [key]: e.target.value }),
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setSending(true);
-    // Simulate send — wire up to your backend/email service
-    await new Promise(r => setTimeout(r, 1200));
-    setSending(false);
-    toast.success('Message sent! We\'ll get back to you shortly.');
+
+    if (!phoneNumber) {
+      toast.error('We\'re not set up to receive messages yet — please email us directly.');
+      return;
+    }
+
+    const digits = phoneNumber.replace(/\D/g, '');
+    const waNumber = digits.length === 10 ? `1${digits}` : digits;
+    const lines = [
+      `New message from the website:`,
+      `Name: ${form.name}`,
+      `Email: ${form.email}`,
+      form.phone && `Phone: ${form.phone}`,
+      `Subject: ${form.subject}`,
+      ``,
+      form.message,
+    ].filter(Boolean).join('\n');
+
+    window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(lines)}`, '_blank', 'noopener,noreferrer');
+    toast.success('Opening WhatsApp to send your message...');
     setForm({ name: '', email: '', phone: '', subject: '', message: '' });
   };
 
@@ -123,9 +137,9 @@ export default function Contact() {
                   rows={5}
                 />
               </div>
-              <button type="submit" className="btn btn-primary contact-form__submit" disabled={sending}>
+              <button type="submit" className="btn btn-primary contact-form__submit">
                 <Send size={16} />
-                {sending ? 'Sending...' : 'Send Message'}
+                Send via WhatsApp
               </button>
             </form>
           </Reveal>

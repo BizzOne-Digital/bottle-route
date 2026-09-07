@@ -18,8 +18,8 @@ const siteSettingsSchema = new mongoose.Schema({
   logoPublicId: { type: String },
   deliveryZones: [{ type: String }],
   operatingHours: {
-    open: { type: String, default: '10:00 AM' },
-    close: { type: String, default: '3:00 AM' },
+    open: { type: String, default: 'Anytime' },
+    close: { type: String, default: '' },
   },
 }, { timestamps: true });
 

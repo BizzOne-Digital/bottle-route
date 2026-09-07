@@ -123,6 +123,11 @@
   height: 16px;
   background: var(--br-border-strong);
 }
+.hero__trust-item--phone {
+  color: var(--br-green-bright);
+  transition: color var(--transition);
+}
+.hero__trust-item--phone:hover { color: var(--br-accent); }
 
 /* Bottom bar */
 .hero__bar {

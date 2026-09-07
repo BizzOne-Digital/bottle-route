@@ -24,9 +24,9 @@ const SERVICES = [
   },
   {
     icon: Clock,
-    title: 'Late Night Service',
-    desc: 'Open until 3 AM. When other stores close, we keep delivering so the night doesn\'t have to stop.',
-    features: ['Daily until 3:00 AM', 'Weekend extended hours', 'No curfew on good times'],
+    title: 'Open Anytime',
+    desc: 'We deliver around the clock. When other stores close, we keep going so the night doesn\'t have to stop.',
+    features: ['Open anytime, every day', 'No fixed cutoff hours', 'No curfew on good times'],
   },
   {
     icon: Star,

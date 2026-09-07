@@ -66,7 +66,7 @@ export default function Footer() {
             <ul className="footer__contact">
               {phone && <li><span>Phone:</span> <a href={`tel:${phone}`}>{phone}</a></li>}
               <li><span>Email:</span> <a href={`mailto:${email}`}>{email}</a></li>
-              <li><span>Hours:</span> 10 AM — 3 AM daily</li>
+              <li><span>Hours:</span> Open Anytime</li>
             </ul>
           </div>
         </div>

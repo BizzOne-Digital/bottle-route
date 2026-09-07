@@ -6,7 +6,7 @@ import { productsApi } from '../../utils/api';
 import './AdminProducts.css';
 
 const BLANK = { name: '', category: 'vodka', description: '', price: '', volume: '750ml', inStock: true, featured: false, premium: false, regularsFavourite: false };
-const CATS = ['vodka', 'whisky', 'tequila', 'convenience', 'other'];
+const CATS = ['vodka', 'whisky', 'tequila', 'rum', 'brandy', 'beer', 'cooler', 'gin', 'wine', 'convenience', 'other'];
 
 export default function AdminProducts() {
   const [products, setProducts] = useState([]);

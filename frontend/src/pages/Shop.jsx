@@ -6,7 +6,7 @@ import Reveal from '../components/ui/Reveal';
 import { productsApi } from '../utils/api';
 import './Shop.css';
 
-const CATEGORIES = ['all', 'vodka', 'whisky', 'tequila', 'rum', 'brandy', 'beer', 'cooler', 'convenience', 'other'];
+const CATEGORIES = ['all', 'vodka', 'whisky', 'tequila', 'rum', 'brandy', 'beer', 'cooler', 'gin', 'wine', 'convenience', 'other'];
 
 export default function Shop() {
   const [searchParams, setSearchParams] = useSearchParams();

@@ -10,7 +10,7 @@ export default function AdminSettings() {
     deliveryTime: '30 Minutes', minAge: 19,
     'socialLinks.instagram': '', 'socialLinks.facebook': '',
     'socialLinks.twitter': '', 'socialLinks.tiktok': '',
-    'operatingHours.open': '10:00 AM', 'operatingHours.close': '3:00 AM',
+    'operatingHours.open': 'Anytime', 'operatingHours.close': '',
   });
   const [logoFile, setLogoFile] = useState(null);
   const [logoPreview, setLogoPreview] = useState(null);
@@ -33,8 +33,8 @@ export default function AdminSettings() {
         'socialLinks.facebook': s.socialLinks?.facebook || '',
         'socialLinks.twitter': s.socialLinks?.twitter || '',
         'socialLinks.tiktok': s.socialLinks?.tiktok || '',
-        'operatingHours.open': s.operatingHours?.open || '10:00 AM',
-        'operatingHours.close': s.operatingHours?.close || '3:00 AM',
+        'operatingHours.open': s.operatingHours?.open || 'Anytime',
+        'operatingHours.close': s.operatingHours?.close || '',
       });
       if (s.logo) setLogoPreview(s.logo);
     }).catch(() => toast.error('Failed to load settings'))

@@ -1,10 +1,18 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingBag, ChevronRight, Shield, MapPin } from 'lucide-react';
+import { ShoppingBag, ChevronRight, Shield, MapPin, Phone } from 'lucide-react';
 import { useOrderNowModal } from '../../context/OrderNowModalContext';
+import { settingsApi } from '../../utils/api';
 import './Hero.css';
 
 export default function Hero() {
   const { openOrderNowModal } = useOrderNowModal();
+  const [phone, setPhone] = useState('');
+
+  useEffect(() => {
+    settingsApi.get().then(({ data }) => setPhone(data.data.phone || '')).catch(() => {});
+  }, []);
+
   return (
     <section className="hero">
       {/* Background layer */}
@@ -40,6 +48,15 @@ export default function Hero() {
           </div>
 
           <div className="hero__trust">
+            {phone && (
+              <>
+                <a href={`tel:${phone}`} className="hero__trust-item hero__trust-item--phone">
+                  <Phone size={15} />
+                  <span>{phone}</span>
+                </a>
+                <div className="hero__trust-sep" />
+              </>
+            )}
             <div className="hero__trust-item">
               <MapPin size={15} />
               <span>Mississauga, Oakville, Milton & Etobicoke</span>
