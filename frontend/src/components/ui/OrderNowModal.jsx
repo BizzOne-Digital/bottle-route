@@ -1,12 +1,18 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { X, Phone } from 'lucide-react';
 import { settingsApi } from '../../utils/api';
 import './OrderNowModal.css';
 
 export default function OrderNowModal({ isOpen, onClose }) {
   const [phone, setPhone] = useState('');
-  const [loading, setLoading] = useState(false);
+  // Starts true: this component is rendered outside <BrowserRouter> (its
+  // Provider wraps the router), so its first paint after opening — before
+  // this effect has run — must never fall into the "no phone yet" fallback
+  // branch, which used to render a react-router <Link> with no Router
+  // context available and crash the whole app. Defaulting to the loading
+  // state avoids that render path entirely; the fallback below also no
+  // longer uses <Link> at all, as a second, independent safeguard.
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -47,9 +53,9 @@ export default function OrderNowModal({ isOpen, onClose }) {
         ) : (
           <p className="order-now-modal__text">
             Phone number coming soon — please use the{' '}
-            <Link to="/contact" className="order-now-modal__link" onClick={onClose}>
+            <a href="/contact" className="order-now-modal__link" onClick={onClose}>
               contact form
-            </Link>
+            </a>
             .
           </p>
         )}
