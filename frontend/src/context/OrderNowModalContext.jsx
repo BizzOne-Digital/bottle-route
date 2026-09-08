@@ -12,7 +12,13 @@ export const OrderNowModalProvider = ({ children }) => {
   return (
     <OrderNowModalContext.Provider value={{ openOrderNowModal }}>
       {children}
-      <OrderNowModal isOpen={isOpen} onClose={closeOrderNowModal} />
+      {/* Wrapped in .site so the modal picks up the public light-theme
+          color variables — this Provider sits above PublicLayout's own
+          .site wrapper, so without this it inherited the dark admin
+          theme's :root values instead (dark bg + near-black text). */}
+      <div className="site" style={{ minHeight: 0 }}>
+        <OrderNowModal isOpen={isOpen} onClose={closeOrderNowModal} />
+      </div>
     </OrderNowModalContext.Provider>
   );
 };
