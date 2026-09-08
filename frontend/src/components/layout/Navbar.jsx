@@ -29,6 +29,15 @@ export default function Navbar() {
 
   useEffect(() => { setMenuOpen(false); }, [pathname]);
 
+  // Close the mobile menu as soon as the user scrolls, instead of it
+  // staying open and floating over the page content.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handler = () => setMenuOpen(false);
+    window.addEventListener('scroll', handler, { passive: true });
+    return () => window.removeEventListener('scroll', handler);
+  }, [menuOpen]);
+
   useEffect(() => {
     settingsApi.get().then(({ data }) => {
       if (data.data.logo) setLogo(data.data.logo);
