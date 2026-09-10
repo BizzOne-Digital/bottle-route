@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ShoppingBag, Menu, X, Zap } from 'lucide-react';
+import { ShoppingBag, Menu, X } from 'lucide-react';
 import { useOrderNowModal } from '../../context/OrderNowModalContext';
-import { settingsApi } from '../../utils/api';
 import './Navbar.css';
 
 const NAV_LINKS = [
@@ -17,7 +16,6 @@ const NAV_LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [logo, setLogo] = useState(null);
   const { pathname } = useLocation();
   const { openOrderNowModal } = useOrderNowModal();
 
@@ -38,25 +36,12 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handler);
   }, [menuOpen]);
 
-  useEffect(() => {
-    settingsApi.get().then(({ data }) => {
-      if (data.data.logo) setLogo(data.data.logo);
-    }).catch(() => {});
-  }, []);
-
   return (
     <header className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
       <div className="navbar__inner">
         {/* Logo */}
         <Link to="/" className="navbar__logo">
-          {logo ? (
-            <img src={logo} alt="Bottle Route" className="navbar__logo-img" />
-          ) : (
-            <>
-              <span className="navbar__logo-icon"><Zap size={18} /></span>
-              <span className="navbar__logo-text">BOTTLE ROUTE</span>
-            </>
-          )}
+          <img src="/logo.png" alt="Bottle Route" className="navbar__logo-img" />
         </Link>
 
         {/* Desktop Nav */}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Zap, Instagram, Facebook, Twitter } from 'lucide-react';
+import { Instagram, Facebook, Twitter } from 'lucide-react';
 import { settingsApi } from '../../utils/api';
 import './Footer.css';
 
@@ -21,16 +21,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="footer__brand">
             <Link to="/" className="footer__logo">
-              {settings?.logo ? (
-                <img src={settings.logo} alt="Bottle Route" style={{ height: 40, width: 'auto', objectFit: 'contain' }} />
-              ) : (
-                <>
-                  <span className="navbar__logo-icon" style={{ background: 'var(--br-green-bright)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 32, height: 32, borderRadius: 6 }}>
-                    <Zap size={18} />
-                  </span>
-                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', letterSpacing: '0.05em' }}>BOTTLE ROUTE</span>
-                </>
-              )}
+              <img src="/logo.png" alt="Bottle Route" style={{ height: 64, width: 'auto', objectFit: 'contain' }} />
             </Link>
             <p className="footer__tagline">Drinks Delivered. Good Times Guaranteed.</p>
             <div className="footer__social">
