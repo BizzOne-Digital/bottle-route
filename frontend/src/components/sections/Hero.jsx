@@ -28,8 +28,8 @@ export default function Hero() {
           </div>
 
           <h1 className="hero__headline">
-            <span className="hero__headline-line">DRINKS AT</span>
-            <span className="hero__headline-line hero__headline-accent">YOUR DOOR.</span>
+            <span className="hero__headline-line">AFTER HOURS</span>
+            <span className="hero__headline-line hero__headline-accent">ALCOHOL DELIVERY</span>
           </h1>
 
           <p className="hero__sub">
