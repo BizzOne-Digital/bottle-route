@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate, Outlet } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import {
-  LayoutDashboard, Package, Tag, Settings, LogOut,
+  LayoutDashboard, Package, Tag, Settings, LogOut, FileText,
   Zap, Menu, X, ExternalLink, ChevronRight
 } from 'lucide-react';
 import './AdminLayout.css';
@@ -11,6 +11,7 @@ const NAV = [
   { label: 'Dashboard', href: '/admin', icon: LayoutDashboard },
   { label: 'Products', href: '/admin/products', icon: Package },
   { label: 'Pricing', href: '/admin/pricing', icon: Tag },
+  { label: 'Blog', href: '/admin/blog', icon: FileText },
   { label: 'Settings', href: '/admin/settings', icon: Settings },
 ];
 

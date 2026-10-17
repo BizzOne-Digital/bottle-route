@@ -35,6 +35,7 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/products', require('./routes/products'));
 app.use('/api/settings', require('./routes/settings'));
 app.use('/api/pricing', require('./routes/pricing'));
+app.use('/api/blogs', require('./routes/blogs'));
 
 // Error handler
 app.use((err, req, res, next) => {

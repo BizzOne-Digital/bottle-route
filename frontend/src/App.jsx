@@ -17,6 +17,8 @@ import Services from './pages/Services';
 import Gallery from './pages/Gallery';
 import Pricing from './pages/Pricing';
 import Contact from './pages/Contact';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 
 // Admin Pages
 import AdminLogin from './pages/admin/AdminLogin';
@@ -24,6 +26,7 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminProducts from './pages/admin/AdminProducts';
 import AdminPricing from './pages/admin/AdminPricing';
 import AdminSettings from './pages/admin/AdminSettings';
+import AdminBlogs from './pages/admin/AdminBlogs';
 
 // Global Styles
 import './styles/global.css';
@@ -57,6 +60,8 @@ export default function App() {
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
           </Route>
 
           {/* Admin */}
@@ -72,6 +77,7 @@ export default function App() {
             <Route index element={<AdminDashboard />} />
             <Route path="products" element={<AdminProducts />} />
             <Route path="pricing" element={<AdminPricing />} />
+            <Route path="blog" element={<AdminBlogs />} />
             <Route path="settings" element={<AdminSettings />} />
           </Route>
 

@@ -35,7 +35,7 @@ export default function Footer() {
           <div className="footer__col">
             <h4 className="footer__col-title">Quick Links</h4>
             <ul>
-              {['Home', 'About', 'Shop', 'Services', 'Gallery', 'Contact'].map((item) => (
+              {['Home', 'About', 'Shop', 'Services', 'Gallery', 'Blog', 'Contact'].map((item) => (
                 <li key={item}><Link to={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`}>{item}</Link></li>
               ))}
             </ul>

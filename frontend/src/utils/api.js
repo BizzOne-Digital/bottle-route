@@ -41,6 +41,15 @@ export const pricingApi = {
   update: (data) => api.put('/pricing', data),
 };
 
+export const blogsApi = {
+  getPublished: () => api.get('/blogs'),
+  getBySlug: (slug) => api.get(`/blogs/${slug}`),
+  getAll: () => api.get('/blogs/admin/all'),
+  create: (data) => api.post('/blogs', data),
+  update: (id, data) => api.put(`/blogs/${id}`, data),
+  delete: (id) => api.delete(`/blogs/${id}`),
+};
+
 export const authApi = {
   login: (data) => api.post('/auth/login', data),
   me: () => api.get('/auth/me'),

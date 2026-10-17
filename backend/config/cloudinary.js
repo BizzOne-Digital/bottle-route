@@ -15,6 +15,7 @@ const storage = new CloudinaryStorage({
     if (req.path.includes('product')) folder = 'bottle-route/products';
     if (req.path.includes('hero')) folder = 'bottle-route/hero';
     if (req.path.includes('gallery')) folder = 'bottle-route/gallery';
+    if (req.baseUrl.includes('blog')) folder = 'bottle-route/blog';
     return {
       folder,
       allowed_formats: ['jpg', 'jpeg', 'png', 'webp'],
