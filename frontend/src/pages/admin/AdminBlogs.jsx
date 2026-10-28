@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Plus, Trash2, Edit, FileText, ExternalLink } from 'lucide-react';
+import { Plus, Trash2, Edit, FileText, ExternalLink, Link as LinkIcon } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { blogsApi } from '../../utils/api';
 import './AdminProducts.css';
@@ -16,6 +16,7 @@ export default function AdminBlogs() {
   const [imagePreview, setImagePreview] = useState(null);
   const [saving, setSaving] = useState(false);
   const fileRef = useRef();
+  const contentRef = useRef();
 
   const load = () => {
     setLoading(true);
@@ -28,6 +29,22 @@ export default function AdminBlogs() {
   useEffect(() => { load(); }, []);
 
   const set = (k) => (e) => setForm({ ...form, [k]: e.target.value });
+
+  // Wraps the selected text (or "link text") in [text](url) at the cursor.
+  const insertLink = () => {
+    const el = contentRef.current;
+    const url = prompt('Enter the link URL (e.g. https://example.com)');
+    if (!url) return;
+    const start = el.selectionStart;
+    const end = el.selectionEnd;
+    const label = form.content.slice(start, end) || 'link text';
+    const snippet = `[${label}](${url.trim()})`;
+    setForm({ ...form, content: form.content.slice(0, start) + snippet + form.content.slice(end) });
+    requestAnimationFrame(() => {
+      el.focus();
+      el.setSelectionRange(start + 1, start + 1 + label.length);
+    });
+  };
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -161,9 +178,17 @@ export default function AdminBlogs() {
               </div>
 
               <div className="form-group">
-                <label className="form-label">Content *</label>
-                <textarea className="form-textarea" value={form.content} onChange={set('content')} required rows={14}
-                  placeholder={'Write the post here.\n\nLeave a blank line between paragraphs.\n## Heading\n### Smaller heading\n- List item'} />
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
+                  <label className="form-label">Content *</label>
+                  <button type="button" className="btn btn-outline" style={{ padding: '0.3rem 0.75rem', fontSize: '0.8rem' }} onClick={insertLink}>
+                    <LinkIcon size={14} /> Add Link
+                  </button>
+                </div>
+                <textarea ref={contentRef} className="form-textarea" value={form.content} onChange={set('content')} required rows={14}
+                  placeholder={'Write the post here.\n\nLeave a blank line between paragraphs.\n## Heading\n### Smaller heading\n- List item\n[Link text](https://example.com)'} />
+                <p className="admin-page-sub" style={{ fontSize: '0.8rem', marginTop: '0.4rem' }}>
+                  Links: select text and click "Add Link", or type [Link text](https://example.com). Plain https:// URLs also become clickable.
+                </p>
               </div>
 
               <div className="admin-modal__grid">

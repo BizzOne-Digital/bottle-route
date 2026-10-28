@@ -37,6 +37,8 @@
 .blog-content { color: var(--br-gray-light); line-height: 1.8; font-size: 1.02rem; }
 .blog-content p, .blog-content ul { margin-bottom: 1.25rem; }
 .blog-content ul { padding-left: 1.25rem; list-style: disc; }
+.blog-content a { color: var(--br-accent); text-decoration: underline; text-underline-offset: 3px; word-break: break-word; }
+.blog-content a:hover { color: var(--br-accent-hover); }
 .blog-content h2 { font-size: 1.6rem; margin: 2rem 0 0.75rem; }
 .blog-content h3 { font-size: 1.25rem; margin: 1.5rem 0 0.5rem; }
 

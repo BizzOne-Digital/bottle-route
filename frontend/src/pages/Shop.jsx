@@ -48,7 +48,11 @@ export default function Shop() {
               <button
                 key={cat}
                 className={`shop__cat-btn${activeCategory === cat ? ' shop__cat-btn--active' : ''}`}
-                onClick={() => setSearchParams(cat === 'all' ? {} : { category: cat })}
+                onClick={() => {
+                  setSearchParams(cat === 'all' ? {} : { category: cat });
+                  // Only the query string changes here, so ScrollToTop (pathname-based) won't fire.
+                  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                }}
               >
                 {cat.charAt(0).toUpperCase() + cat.slice(1)}
               </button>
